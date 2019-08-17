@@ -1,0 +1,86 @@
+﻿@model Impacta.Tarefas.Models.TarefaViewModel
+
+@{
+    ViewBag.Title = "NovaTarefa";
+}
+
+<h2>NovaTarefa</h2>
+
+
+@using (Html.BeginForm("NovaTarefa","Tarefa",FormMethod.Post, new { @class = "search-form"}))
+{
+    @Html.AntiForgeryToken()
+    
+<div class="form-horizontal">
+
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+    @if (ViewBag.Alerta != null) {
+        <script type="text/javascript">
+            alert('@ViewBag.Alerta');
+        </script>
+
+        <div class="alert alert-dismissable alert-danger" >
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <strong>OPS!</strong> @ViewBag.Alerta.
+        </div>
+    }
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Prioridade, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Prioridade, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Prioridade, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Concluida, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @*<div class="checkbox">
+                @Html.EditorFor(model => model.Concluida)
+                @Html.ValidationMessageFor(model => model.Concluida, "", new { @class = "text-danger" })
+            </div>*@
+            <div class="dropdown">
+                @Html.DropDownListFor(model => model.Concluida,new[] { new SelectListItem { Text="Sim", Value="True"},
+                        new SelectListItem{ Text = "Não", Value="False"} },
+                        new { @class ="form-control"})
+
+                @Html.ValidationMessageFor(model => model.Concluida, "", new { @class = "text-danger" })
+            </div>
+
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Nome, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Nome, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Nome, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Observacao, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.TextAreaFor(model => model.Observacao, new { htmlAttributes = new { @class = "textarea" } })
+            @Html.ValidationMessageFor(model => model.Observacao, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Create" class="btn btn-success" />
+        </div>
+    </div>
+</div>
+}
+
+<div>
+    @Html.ActionLink("Voltar para lista", "ListarNovasTarefas","Tarefa")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

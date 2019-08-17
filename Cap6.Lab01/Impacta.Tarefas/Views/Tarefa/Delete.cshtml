@@ -1,0 +1,56 @@
+﻿@model Impacta.Tarefas.Core.Models.Tarefa
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Excluir Tarefa</h2>
+
+<h3>Confirma a exclusão da tarefa?</h3>
+<div>
+    <h4>Tarefa</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Prioridade)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Prioridade)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Concluida)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Concluida)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Observacao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Observacao)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Excluir" class="btn btn-default" /> |
+            @Html.ActionLink("Voltar para a lista", "ListarNovasTarefas","Tarefa")
+        </div>
+    }
+</div>

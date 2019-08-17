@@ -1,0 +1,50 @@
+﻿@model Impacta.Tarefas.Core.Models.Tarefa
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Detalhes</h2>
+
+<div>
+    <h4>Tarefa</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Prioridade)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Prioridade)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Concluida)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Concluida)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Observacao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Observacao)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Voltar para a lista", "ListarNovasTarefas","Tarefa")
+</p>
