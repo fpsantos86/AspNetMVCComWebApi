@@ -29,6 +29,11 @@ namespace Impacta.Tarefas.Core.Models
 		public Endereco Endereco { get; set; }
 
 		public string Url { get; set; }
+
+		public override string ToString()
+		{
+			return $"{this.EditoraId} \n {this.Nome } \n {this.Email}";	
+		}
 	}
 
 }

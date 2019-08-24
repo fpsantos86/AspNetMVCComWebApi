@@ -57,7 +57,7 @@ namespace Impacta.Tarefas.Controllers
 
 				return RedirectToAction("ListarNovasEditoras");
             }
-            catch(Exception ex)
+            catch
             {
                 return View();
             }
