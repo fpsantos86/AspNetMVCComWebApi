@@ -22,7 +22,7 @@
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Tarefas", "ListarNovasTarefas", "Tarefa")</li>
                     <li>@Html.ActionLink("Editoras", "ListarNovasEditoras", "RealBooks")</li>
-                    @*<li>
+                    <li>
                         @if (Session["Usuario"] != null)
                         {
                             @Html.ActionLink($"Olá {((Impacta.Tarefas.Core.Models.Usuario)HttpContext.Current.Session["Usuario"]).UserName.ToUpper() + "[CLIQUE AQUI p/ LOGOUT]"}", "Sair", "Autenticador",new {@classname = "nav-link dropdown-toggle"})
@@ -33,20 +33,8 @@
                             @Html.ActionLink("Login", "Entrar", "Autenticador",new {@class="navbar-link dropdown-toggle"})
 
                         }
-                    </li>*@
-                    <li>
-                        @if (User.Identity.IsAuthenticated)
-                        {
-                            @Html.ActionLink($"Olá {User.Identity.Name.ToString()} [CLIQUE AQUI p/ LOGOUT]", "Logout", "Login", new { @classname = "nav-link dropdown-toggle" })
-
-                        }
-                        else
-                        {
-                            @Html.ActionLink("Login", "Entrar", "Autenticador", new { @class = "navbar-link dropdown-toggle" })
-
-                        }
-
                     </li>
+
                 </ul>
 
             </div>
